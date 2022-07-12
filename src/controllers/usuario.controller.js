@@ -17,7 +17,7 @@ exports.getUsuario = async (req, res) => {
       });
     }
 
-    return res.send(usuario);
+    return res.status(200).send(usuario);
   } catch (err) {
     return res.status(500).send({
       message: `Erro: ${err.message}`,
@@ -47,10 +47,10 @@ exports.createUsuario = async (req, res) => {
 
   try {
     let novoUsuario = await Usuario.create({
-      login,
-      senha,
+      login: login,
+      senha: senha
     });
-    return res.send(novoUsuario);
+    return res.status(200).send(novoUsuario);
   } catch (err) {
     return res.status(500).send({
       message: `Erro: ${err.message}`,

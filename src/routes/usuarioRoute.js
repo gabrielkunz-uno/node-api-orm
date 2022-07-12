@@ -1,13 +1,10 @@
 import { Router } from 'express';
-const usuario = require('../controllers/usuario.controller');
+const usuarioController = require('../controllers/usuario.controller');
 const router = Router();
 
-router.get('/:id', usuario.getUsuario);
-
-router.post('/create', usuario.createUsuario);
-
-router.post('/delete', usuario.deleteUsuario);
-
-router.post('/update/:id', usuario.updateUsuario);
+router.get('/:id', usuarioController.getUsuario);
+router.post('/create', usuarioController.createUsuario);
+router.post('/delete', usuarioController.deleteUsuario);
+router.post('/update/:id', usuarioController.updateUsuario);
 
 export default router;
