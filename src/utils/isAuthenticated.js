@@ -1,18 +1,17 @@
 require('dotenv/config');
 
 export const isAuthenticated = async (req, res, next) => {
-  if (!req.query.apiKey) {
+  if (!req.query.senha) {
     return res.status(401).send({
-      message: 'Must be authenticated with an API Key to hit this endpoint',
-    });
+      message: 'Informe uma senha na query da URL para autenticar'
+    })
   } else {
-    const { apiKey } = req.query;
-    if (apiKey === '123546FGFG4567DSDF4646F') {
+    const senha = 'mu1t0f4c1l';
+    if (req.query.senha == senha) {
       return next();
-    } else {
-      return res.status(401).send({
-        message: 'API Key does not match!',
-      });
     }
+    return res.status(401).send({
+      message: 'A senha é inválida'
+    })
   }
 };
